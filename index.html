@@ -8,8 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;500&family=Roboto:wght@100;300;400&family=Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assests/css/style.css">
   <link rel="stylesheet" href="./assests/css/cart.css">
+  <link rel="stylesheet" href="./assests/css/product.css">
   
-  <title>Táo Việt</title>
+  <title>Trái táo</title>
 </head>
 <body>
   <div class="app">
@@ -26,8 +27,9 @@
         
       </div>
       <div class="header-right">
-        <div class="cart">
-          <a href="javascript:void(0)" onclick="requireLogin()"><i class="fas fa-shopping-cart"></i></a>
+        <div class="cart" onclick="requireLogin()">
+          <a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a>
+          <span>Giỏ hàng</span>
         </div>
         <i class="fas fa-user-circle icon-user"></i>
         <span class="name-user hover-text"></span>
@@ -105,7 +107,7 @@
           <div class="bot-board">
             <input type="submit" value="Sign Up">
             <span>
-              Bạn mới biết đến Táo Việt?
+              Bạn mới biết đến Trái táo?
               <a href="javascript:void(0)" onclick="changeForm()">Đăng ký</a>
             </span>
           </div>
@@ -122,7 +124,7 @@
         <li>
           <a href="">
             <i class="fas fa-home"></i>
-            <span>Táo Việt</span>
+            <span>Trái táo</span>
           </a>
         </li>
         <li>
@@ -217,28 +219,30 @@
     <!-- Container -->
     <div class="container">
       <!-- SlideShow -->
-      <div class="slideshow-container">
-
-        <div class="mySlides fade">
-          <img src="assests/img/image1.png" style="width:100%">
+      <div class="slider">
+        <div class="slideshow-container">
+  
+          <div class="mySlides fade">
+            <img src="assests/img/image3.png" style="width:100%">
+          </div>
+        
+          <div class="mySlides fade">
+            <img src="assests/img/image1.png" style="width:100%">
+          </div>
+        
+          <div class="mySlides fade">
+            <img src="assests/img/image2.png" style="width:100%">
+          </div>
+        
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-      
-        <div class="mySlides fade">
-          <img src="assests/img/image3.png" style="width:100%">
+        <br>
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
         </div>
-      
-        <div class="mySlides fade">
-          <img src="assests/img/image2.png" style="width:100%">
-        </div>
-      
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-      <br>
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
       </div>
       <div class="innerLable">
 
@@ -246,13 +250,68 @@
       <!-- Sản phẩm  -->
       <div class="products">
 
+        <!-- Tablet -->
+        <div class="box-content">
+
+          <div class="lable">
+            <h1>Ipad</h1>
+          </div>
+          <div class="items-tablet list">
+            <!-- 1 -->
+            <div class="product-item"  onclick="innerDetail(this)">
+              <div class="product-top">
+                  <img  class="product-thumb" src="./assests/img/tablet/ipad-air-4-wifi-64gb-2020-xanhduong-600x600-600x600.jpg" alt="">
+                  <a href="" class="product-name">Ipad air 4 wifi 64gb</a>
+              </div>
+              <div class="product-info">
+                <div class="product-price">21.490.000 VND</div>
+                <a href="javascript:void(0)" onclick="confirmation(this)" data-set="3803IP" class="buy-now">Mua ngay</a>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="product-item"  onclick="innerDetail(this)">
+              <div class="product-top">
+                  <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-2021-129-inch-gray-thumb-600x600.jpg" alt="">
+                  <a href="" class="product-name">Ipad pro 2021 12 9 inch gray</a>
+              </div>
+              <div class="product-info">
+                <div class="product-price">37.490.000 VND</div>
+                <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4409IP" class="buy-now">Mua ngay</a>
+              </div>
+            </div>
+            
+            <!-- 3 -->
+            <div class="product-item"  onclick="innerDetail(this)">
+              <div class="product-top">
+                  <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-2021-129-inch-silver-600x600.jpg" alt="">
+                  <a href="" class="product-name">Ipad pro 2021 12 9 inch silver</a>
+              </div>
+              <div class="product-info">
+                <div class="product-price">41.990.000 VND</div>
+                <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4510IP" class="buy-now">Mua ngay</a>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="product-item"  onclick="innerDetail(this)">
+              <div class="product-top">
+                  <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-12-9-inch-wifi-128gb-2020-bac-600x600-1-600x600.jpg" alt="">
+                  <a href="" class="product-name">Ipad pro 12 9 inch wifi 128gb</a>
+              </div>
+              <div class="product-info">
+                <div class="product-price">26.790.000 VND</div>
+                <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4308IP" class="buy-now">Mua ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Phone -->
         <div class="lable">
           <h1>Iphone</h1>
         </div>
         <div class="items-phone list">
           <!-- 1 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/phone/iphone-12-pro-max-vang-new-600x600-600x600.jpg" alt="">
                 <a href="" class="product-name">Iphone 12 pro max 128gb</a>
@@ -260,11 +319,10 @@
             <div class="product-info">
               <div class="product-price">29.000.000 VND</div>
               <a href="javascript:void(0)" onclick="confirmation(this)" data-set="2312PM" class="buy-now">Mua ngay</a>
-              <a href="javascript:void(0)" onclick="saveProduct(this)" data-set="4600MB" class="buy-now">Them</a>
             </div>
           </div>
           <!-- 2 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/phone/iphone-13-mini-blue-2-600x600.jpg" alt="">
                 <a href="" class="product-name">Iphone 13 128gb</a>
@@ -275,7 +333,7 @@
             </div>
           </div>
           <!-- 3 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/phone/iphone-11-pro-256gb-black-600x600.jpg" alt="">
                 <a href="" class="product-name">Iphone 11 pro 128gb</a>
@@ -286,7 +344,7 @@
             </div>
           </div>
           <!-- 4 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/phone/iphone-13-pro-gold-1-600x600.jpg" alt="">
                 <a href="" class="product-name">Iphone 13 pro 64</a>
@@ -298,64 +356,13 @@
           </div>
         </div>
 
-        <!-- Tablet -->
-        <div class="lable">
-          <h1>Ipad</h1>
-        </div>
-        <div class="items-tablet list">
-          <!-- 1 -->
-          <div class="product-item">
-            <div class="product-top">
-                <img  class="product-thumb" src="./assests/img/tablet/ipad-air-4-wifi-64gb-2020-xanhduong-600x600-600x600.jpg" alt="">
-                <a href="" class="product-name">Ipad air 4 wifi 64gb</a>
-            </div>
-            <div class="product-info">
-              <div class="product-price">21.490.000 VND</div>
-              <a href="javascript:void(0)" onclick="confirmation(this)" data-set="3803IP" class="buy-now">Mua ngay</a>
-            </div>
-          </div>
-          <!-- 2 -->
-          <div class="product-item">
-            <div class="product-top">
-                <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-2021-129-inch-gray-thumb-600x600.jpg" alt="">
-                <a href="" class="product-name">Ipad pro 2021 12 9 inch gray</a>
-            </div>
-            <div class="product-info">
-              <div class="product-price">37.490.000 VND</div>
-              <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4409IP" class="buy-now">Mua ngay</a>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="product-item">
-            <div class="product-top">
-                <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-2021-129-inch-silver-600x600.jpg" alt="">
-                <a href="" class="product-name">Ipad pro 2021 12 9 inch silver</a>
-            </div>
-            <div class="product-info">
-              <div class="product-price">41.990.000 VND</div>
-              <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4510IP" class="buy-now">Mua ngay</a>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="product-item">
-            <div class="product-top">
-                <img  class="product-thumb" src="./assests/img/tablet/ipad-pro-12-9-inch-wifi-128gb-2020-bac-600x600-1-600x600.jpg" alt="">
-                <a href="" class="product-name">Ipad pro 12 9 inch wifi 128gb</a>
-            </div>
-            <div class="product-info">
-              <div class="product-price">26.790.000 VND</div>
-              <a href="javascript:void(0)" onclick="confirmation(this)" data-set="4308IP" class="buy-now">Mua ngay</a>
-            </div>
-          </div>
-        </div>
-
         <!-- Laptop -->
         <div class="lable">
           <h1>Macbook</h1>
         </div>
         <div class="items-laptop list">
           <!-- 1 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/computer/Macbook Pro 13 2020 M1 - Silver.jpg" alt="">
                 <a href="" class="product-name">Macbook Pro 13 2020 M1</a>
@@ -366,7 +373,7 @@
             </div>
           </div>
           <!-- 2 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/computer/MacBook Pro 16 2021 M1 Pro -Silver.png" alt="">
                 <a href="" class="product-name">Macbook Pro 16 2021 M1 Pro</a>
@@ -377,7 +384,7 @@
             </div>
           </div>
           <!-- 3 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/computer/Macbook Air 2020 M1 - Grey.jpg" alt="">
                 <a href="" class="product-name">Macbook Air 2020 M1</a>
@@ -388,7 +395,7 @@
             </div>
           </div>
           <!-- 4 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/computer/Macbook Air 2020 - Grey.jpg" alt="">
                 <a href="" class="product-name">Macbook Air 2020 Gray</a>
@@ -405,7 +412,7 @@
         </div>
         <div class="items-laptop list">
           <!-- 1 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/LinhKien/chuot-bluetooth-apple-mk2e3-trang-avatar-600x600.jpg" alt="">
                 <a href="" class="product-name">Mouse</a>
@@ -416,7 +423,7 @@
             </div>
           </div>
           <!-- 2 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/LinhKien/tai-nghe-bluetooth-airpods-pro-apple-mwp22-thumb-600x600.jpg" alt="">
                 <a href="" class="product-name">AirPods Pro</a>
@@ -427,7 +434,7 @@
             </div>
           </div>
           <!-- 3 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/LinhKien/bluetooth-airpods-2-apple-mv7n2-imei-ava-600x600.jpg" alt="">
                 <a href="" class="product-name">AirPods 2</a>
@@ -438,7 +445,7 @@
             </div>
           </div>
           <!-- 4 -->
-          <div class="product-item">
+          <div class="product-item"  onclick="innerDetail(this)">
             <div class="product-top">
                 <img  class="product-thumb" src="./assests/img/LinhKien/bluetooth-airpods-max-apple-ava-600x600.jpg" alt="">
                 <a href="" class="product-name">AirPods Max</a>
@@ -526,7 +533,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> 
     </footer>
   </div>
   <script src = "js/script.js"></script>

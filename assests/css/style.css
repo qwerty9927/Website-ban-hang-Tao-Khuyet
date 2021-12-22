@@ -19,7 +19,7 @@ ul {
   list-style-type: none;
 }
 .hover-text:hover {
-  color: hsla(0,0%,100%,.7);
+  color: rgba(255, 255, 255);
   transition-duration: .1s;
 }
 .space-tb {
@@ -41,7 +41,7 @@ ul {
   justify-content: space-between;
   height: 60px;
   padding: 0 50px;
-  background-color: #cd1817;
+  background-color: #fed100;
 }
 .header-left {
   display: flex;
@@ -61,24 +61,34 @@ ul {
   display: flex;
   align-items: center;
 }
-.header-right .cart a{
+.header-right .cart {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 5px;
   padding: 10px;
-  font-size: 24px;
-  color: #fff;
   cursor: pointer;
 }
-.header-right .cart:hover a{
-  color: hsla(0,0%,100%,.7);
+.header-right .cart a{
+  font-size: 20px;
+  padding-right: 10px;
+  color: rgb(0, 0, 0);
+}
+.header-right .cart:hover,
+.header-right .cart:hover a,
+.header-right .cart:hover span{
+  color: rgba(255, 255, 255);
   transition-duration: .1s;
+  background-color: #aad000;
 }
 .header-right .icon-user{
   display: none;
   padding: 10px;
   font-size: 24px;
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 .header-right span{
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 18px;
 }
 .name-user {
@@ -116,6 +126,9 @@ ul {
   line-height: 35px;
   border-radius: 0 3px 3px 0;
   color: #fff;
+}
+.icon-search:hover{
+  color: hsla(0,0%,100%,.7);
 }
 .search-box input {
   width: 350px;
@@ -196,9 +209,9 @@ ul {
   padding: 10px 45px;
   border-radius: 50px;
   border: none;
-  color: #fff;
+  color: #000;
   box-shadow: 0 2px 2px rgba(0,0,0,.5);
-  background-color: #f4354d;
+  background-color: #fed100;
 }
 .bot-board input:active {
   transform: scale(0.98);
@@ -233,7 +246,7 @@ ul {
   top: 0;
   right: 0;
   padding: 10px 15px;
-  background-color: #f4354d;
+  background-color: #fed100;
   font-size: 20px;
   border-top-right-radius: 5px;
 }
@@ -471,16 +484,24 @@ nav {
 }
 .buy-now {
   padding: 10px;
-  background-color: #cb1c22;
+  background-color: #fed000;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   margin: 20px 0 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.5);
+}
+.buy-now:active {
+  transform: scale(0.98);
+  box-shadow: none;
+  transition: .1s;
 }
 .buy-now:hover {
-  background-color: #ae1427;
+  background-color: #aaa000;
+  color: #fff;
+  box-shadow: none;
 }
 .product-info .product-price {
   color: #111;
