@@ -97,7 +97,6 @@ function innerValue2(char, i){
     number2--;
     if(number2 > 0){
       quantity--;
-      console.log(quantity);
     }
   }
   if(number2 <= 0){
@@ -144,10 +143,7 @@ function pay(){
     list.push(totalValue);
     temp.push(list);
     localStorage.setItem('productSold', JSON.stringify(temp));
-    // let user = JSON.parse(localStorage.getItem('currentUser'));
     localStorage.setItem('currentUser', JSON.stringify([listProduct[0]]));
-  
-    // $('.cart-box table tr:not(.none-change)').innerHTML = "";
     $$('.cart-box table .product').forEach(value => {
       value.innerHTML = "";
     });
@@ -211,7 +207,6 @@ function previewCart(){
     block += s;
     s = "";
   }
-  // <td><p>${addDot(temp[i][temp[i].length-1].toString().split(""))} <sub> đ</sub></p></td>
   $('.products').innerHTML = `<div class="cart-box"></div>`;
   $('.slider').style.display = "none";
   $('.innerLable').style.display = "none";

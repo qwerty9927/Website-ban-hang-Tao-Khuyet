@@ -30,7 +30,6 @@ const boardRegister = $('.board-register');
 const boardLogin = $('.board-login');
 
 //form đăng ký đăng nhập
-// localStorage.clear();
 function textAnimation(){
   $$('.form-input label').forEach((label)=>{
     label.innerHTML = label.innerText
@@ -49,7 +48,6 @@ let admin = {
   pass: "12345678",
   userType: "admin"
 };
-// localStorage.clear();
 let temp = JSON.parse(localStorage.getItem('dataUser'))
 let listUser = temp !== null ? temp : [admin];
 let data = localStorage.setItem('dataUser', JSON.stringify(listUser));
@@ -264,8 +262,8 @@ let productArr = [
   new InitProduct("5704IM", "computer", "./assests/img/computer/iMac 24 2021 M1-Tim.jpg", "Imac", "44450000"),
   new InitProduct("5805IM", "computer", "./assests/img/computer/iMac 24 2021 M1-Rose.jpg", "Imac", "44450000"),
   //**************************Imac******************************** 
-  new InitProduct("5901LK", "LinhKien", "./assests/img/LinhKien/chuot-bluetooth-apple-mk2e3-trang-avatar-600x600.jpg", "Mouse", "2.500000"),
-  new InitProduct("6204LK", "LinhKien", "./assests/img/LinhKien/tai-nghe-earpods-apple-md827fea-avatar-1-600x600.jpg", "Earphone", "700000"),
+  new InitProduct("5901LK", "LinhKien", "./assests/img/LinhKien/chuot-bluetooth-apple-mk2e3-trang-avatar-600x600.jpg", "Mouse", "2500000"),
+  new InitProduct("6204LK", "LinhKien", "./assests/img/LinhKien/tai-nghe-earpods-apple-md827fea-avatar-1-600x600.jpg", "Earphone", "1000000"),
   new InitProduct("6305LK", "LinhKien", "./assests/img/LinhKien/bluetooth-airpods-2-apple-mv7n2-imei-ava-600x600.jpg", "AirPods 2", "3000000"),
   new InitProduct("6406LK", "LinhKien", "./assests/img/LinhKien/tai-nghe-bluetooth-airpods-pro-apple-mwp22-thumb-600x600.jpg", "AirPods Pro", "5500000"),
   new InitProduct("6507LK", "LinhKien", "./assests/img/LinhKien/bluetooth-airpods-max-apple-ava-600x600.jpg","AirPods Max", "12000000")
@@ -434,7 +432,6 @@ function requireLogin(){
   let user = JSON.parse(localStorage.getItem('currentUser'))
   if(user !== null){
     innerChoice();
-    // total();
   }else {
     boardLogin.classList.remove('active');
   }
@@ -446,14 +443,6 @@ function searchBox(){
   let i = 0, j = 0;
   $('#search').onchange = function(){
     tempSearch = this.value;
-    // for(i = 0;i < productArr.length;i++){
-    //   tempString = productArr[i].name.split(" ");
-    //   for(j = 0;j < tempString.length;j++){
-    //     if(tempSearch == tempString[j].toLowerCase()){
-    //       tempArr.push(productArr[i]);
-    //     }
-    //   }
-    // }
   }
   $('.icon-search').onclick = function(){
     tempSearch = tempSearch.split(" ");
@@ -562,7 +551,7 @@ function innerDetail(obj){
                   <span class="detail">1. Thanh toán khi nhận hàng (COD)</span
                   ><br /><br /><span>
                     Quý khách có thể hoàn thành đặt mua hàng trên website
-                    https://taoviet.vn , Với phương thức thanh toán này, quý
+                    https://taoKhuyet.vn , Với phương thức thanh toán này, quý
                     khách trả tiền mặt cho nhân viên giao hàng COD ngay khi
                     nhận được đơn hàng của mình. Chúng tôi chấp nhận hình thức
                     thanh toán khi nhận hàng (COD) cho tất cả các đơn hàng
