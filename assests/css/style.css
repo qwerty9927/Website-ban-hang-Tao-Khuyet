@@ -107,6 +107,7 @@ ul {
   position: relative;
   padding: 10px;
   cursor: pointer;
+  display: none;
 }
 
 .box-private:hover .name-user {

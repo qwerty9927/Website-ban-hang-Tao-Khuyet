@@ -155,6 +155,7 @@ function setAccount(obj){
 let currentAccount = JSON.parse(localStorage.getItem('currentUser'));
 function renderAccount(){
   if(currentAccount != null){
+    $('.box-private').style.display = 'block';
     headerAccount.style.display = 'none';
     headerRightS.innerHTML = currentAccount[0].fullName;
     iconUser.style.display = 'block';
