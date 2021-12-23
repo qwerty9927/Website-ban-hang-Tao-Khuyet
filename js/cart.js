@@ -57,9 +57,9 @@ function innerChoice(){
         <td><img src="${UserChoose[i].img}" alt=""></td>
         <td><p>${UserChoose[i].name}</p></td>
         <td>
-          <button onclick="innerValue2('+', ${i})">+</button>
+          <button class="btnUpdate" onclick="innerValue2('+', ${i})"><i class="fas fa-plus"></i></button>
           <input class="number-box2" type="text" value="${UserChoose[i].sl}">
-          <button onclick="innerValue2('-', ${i})">-</button>
+          <button class="btnUpdate" onclick="innerValue2('-', ${i})"><i class="fas fa-minus"></i></button>
         </td>
         <td><p>${addDot(UserChoose[i].price.split(""))} <sub> đ</sub></p></td>
         <td class="trash"><button onclick="deleteChoice(this)" data-set = ${i}><i class="fas fa-trash-alt"></i></button></td>
@@ -135,23 +135,28 @@ function pay(){
   let temp2 = JSON.parse(localStorage.getItem('currentUser'));
   let [a] = temp2;
   let list = [a.id];
+  let flag = 0;
   for(let i = 1;i < listProduct.length;i++){
     list.push(listProduct[i]);
+    flag = 1;
   }
-  list.push(totalValue);
-  temp.push(list);
-  localStorage.setItem('productSold', JSON.stringify(temp));
-  // let user = JSON.parse(localStorage.getItem('currentUser'));
-  localStorage.setItem('currentUser', JSON.stringify([listProduct[0]]));
-
-  // $('.cart-box table tr:not(.none-change)').innerHTML = "";
-  $$('.cart-box table .product').forEach(value => {
-    value.innerHTML = "";
-  });
-  $$('.tt').forEach(function(value){
-    value.innerHTML = 0;
-  })
-  $('.sl').innerHTML = 0;
+  if(flag == 1){
+    list.push(totalValue);
+    temp.push(list);
+    localStorage.setItem('productSold', JSON.stringify(temp));
+    // let user = JSON.parse(localStorage.getItem('currentUser'));
+    localStorage.setItem('currentUser', JSON.stringify([listProduct[0]]));
+  
+    // $('.cart-box table tr:not(.none-change)').innerHTML = "";
+    $$('.cart-box table .product').forEach(value => {
+      value.innerHTML = "";
+    });
+    $$('.tt').forEach(function(value){
+      value.innerHTML = 0;
+    })
+    $('.sl').innerHTML = 0;
+  }
+  listProduct = [];
 }
 
 function previewCart(){
@@ -159,8 +164,8 @@ function previewCart(){
   let temp2 = JSON.parse(localStorage.getItem('currentUser'));
   let [a] = temp2;
   let s = "";
-  let k = 1;
   let block = "";
+  let k = 1;
   for(let i = 0;i < temp.length;i++){
     if(temp[i][0] == a.id){
       s += `
@@ -201,16 +206,15 @@ function previewCart(){
           </div>
         </div>
       `
+      k++;
     }
-    k++;
     block += s;
     s = "";
   }
   // <td><p>${addDot(temp[i][temp[i].length-1].toString().split(""))} <sub> đ</sub></p></td>
-  console.log(s);
   $('.products').innerHTML = `<div class="cart-box"></div>`;
   $('.slider').style.display = "none";
   $('.innerLable').style.display = "none";
   $('.page').style.display = "none";
-  $('.cart-box').innerHTML = block;
+  $('.cart-box').innerHTML = block == "" ?  `<p style="text-align: center">Không có đơn hàng nào</p>` : block;
 }

@@ -511,13 +511,13 @@ function innerDetail(obj){
           </div>
   
           <div class="product-content-right-product-color">
-            <span class="color">Màu sắc:</span><span> Xanh</span>
+            <span class="color">Màu sắc:</span><span> Trắng</span>
           </div>
           <div class="quantity">
-            <p style="font-weight: bold">Số lượng:</p>
-            <button onclick="innerValue('+')">+</button>
+            <p style="font-weight: bold;margin-right: 10px">Số lượng:</p>
+            <button class="btnUpdate" onclick="innerValue('+')"><i class="fas fa-plus"></i></button>
             <input class="number-box" type="text" value="1">
-            <button onclick="innerValue('-')">-</button>
+            <button class="btnUpdate" onclick="innerValue('-')"><i class="fas fa-minus"></i></button>
           </div>
           <div class="product-content-right-product-button">
             <button onclick="saveProduct(this)" data-set="${item.productId}">

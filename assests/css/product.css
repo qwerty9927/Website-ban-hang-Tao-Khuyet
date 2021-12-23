@@ -78,12 +78,6 @@
 	align-items: center;
 }
 
-.quantity input {
-	width: 35px;
-	padding-left: 3px;
-	margin: 10px 10px;
-}
-
 .product-content-right-product-button {
 	display: flex;
 }
@@ -187,3 +181,19 @@
 .detail {
 	font-weight: bold;
 }
+.btnUpdate {
+	padding: 8px 10px;
+	background-color: #32bd32;
+	color: #fff;
+	border-radius: 50%;
+	border: none;
+  }
+  .btnUpdate:active {
+	transform: scale(0.95);
+  }
+  .number-box,
+  .number-box2 {
+	width: 35px;
+	margin: 10px 5px;
+	padding: 5px 8px;
+  }
