@@ -148,3 +148,15 @@
 .trash button:hover i {
   font-size: 20px;
 }
+
+.bill {
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+.bill > p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}

@@ -117,6 +117,7 @@ function total(){
   totalValue = 0;
   for(let i = 1;i < listProduct.length;i++){
     totalValue += parseInt(listProduct[i].price) * parseInt(listProduct[i].sl);
+    listProduct[i].totalProduct = parseInt(listProduct[i].price) * parseInt(listProduct[i].sl);
   }
   $$('.tt').forEach(function(value){
     value.innerHTML = `${addDot(totalValue.toString().split(""))}`;
@@ -158,46 +159,58 @@ function previewCart(){
   let temp2 = JSON.parse(localStorage.getItem('currentUser'));
   let [a] = temp2;
   let s = "";
-  let block = `
-    <div class="cart-box">
-      <div class="cart-content-top">
-        <table>
-        
-        </table>
-      </div>
-    </div>  
-  `;
-  let header = `
-    <tr class="none-change">
-      <th>Sản phẩm</th>
-      <th>Tên sản phẩm</th>
-      <th>Số lượng</th>
-      <th>Thành tiền</th>
-      <th>Trạng thái</th>
-    </tr>
-  `;
+  let k = 1;
+  let block = "";
   for(let i = 0;i < temp.length;i++){
     if(temp[i][0] == a.id){
+      s += `
+      <div class="bill">
+        <p>Đơn thứ ${k}</p>
+        <div class="cart-content-top">
+          <table>
+            <tr class="none-change">
+              <th>Sản phẩm</th>
+              <th>Tên sản phẩm</th>
+              <th>Số lượng</th>
+              <th>Thành tiền</th>
+              <th>Trạng thái</th>
+            </tr>
+      
+      `;
       for(let j = 1;j < temp[i].length - 1;j++){
-        console.log(temp[i][temp[i].length-1]);
-        
         s += `
           <tr class="product">
             <td><img src="${temp[i][j].img}" alt=""></td>
             <td><p>${temp[i][j].name}</p></td>
             <td>${temp[i][j].sl}</td>
-            <td><p>${addDot(temp[i][temp[i].length-1].toString().split(""))} <sub> đ</sub></p></td>
+            <td><p style="color: #f00">${addDot(temp[i][j].totalProduct.toString().split(""))} <sub> đ</sub></p></td>
             <td class="status">Chờ xử lý</td>
           </tr>
         `;
       }
+      s += `
+          </table>
+          </div>
+          <div class="cart-content-bottom">
+            <table>
+              <tr>
+                  <td>Tổng tiền hàng</td>
+                  <td><p style="color: #f00">${addDot(temp[i][temp[i].length-1].toString().split(""))} <sub> đ</sub></p></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      `
     }
+    k++;
+    block += s;
+    s = "";
   }
+  // <td><p>${addDot(temp[i][temp[i].length-1].toString().split(""))} <sub> đ</sub></p></td>
   console.log(s);
-  // header += s;
-  // $('.products').innerHTML = block;
-  // $('.slider').style.display = "none";
-  // $('.innerLable').style.display = "none";
-  // $('.page').style.display = "none";
-  // $('.cart-box table').innerHTML = header;
+  $('.products').innerHTML = `<div class="cart-box"></div>`;
+  $('.slider').style.display = "none";
+  $('.innerLable').style.display = "none";
+  $('.page').style.display = "none";
+  $('.cart-box').innerHTML = block;
 }
