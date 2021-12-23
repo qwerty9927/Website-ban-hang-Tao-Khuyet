@@ -41,6 +41,7 @@ function textAnimation(){
 }
 
 let admin = {
+  id: 0,
   user: "admin",
   fullName: "admin",
   address: "",
@@ -53,6 +54,7 @@ let temp = JSON.parse(localStorage.getItem('dataUser'))
 let listUser = temp !== null ? temp : [admin];
 let data = localStorage.setItem('dataUser', JSON.stringify(listUser));
 let formData = {
+  id: "",
   user: "",
   fullName: "",
   address: "",
@@ -93,7 +95,7 @@ function checkRegister(){
       warningUserReg.innerHTML = "";
       formData.user = userRegister.value;
     }
-    if(phoneNumber.value.length < 10 && isNaN(phoneNumber.value)){
+    if(phoneNumber.value.length != 10 && isNaN(phoneNumber.value)){
       warningPhone.innerHTML = "So dien thoai khong dung";
       phoneNumber.focus();
       return false;
@@ -118,6 +120,10 @@ function checkRegister(){
       warningPassReg.innerHTML = "";
       warningRePass.innerHTML = "";
     }
+    listUser.forEach((value) => {
+      formData.id = value.id;
+    });
+    formData.id++;
     setAccount(formData);
     listUser.push(formData);
     localStorage.setItem('dataUser', JSON.stringify(listUser));
@@ -154,7 +160,7 @@ function renderAccount(){
     headerAccount.style.display = 'none';
     headerRightS.innerHTML = currentAccount[0].fullName;
     iconUser.style.display = 'block';
-    headerRightS.addEventListener('click', logOut);
+    $('.header-right .box-private .logOut').addEventListener('click', logOut);
   }
 }
 
@@ -164,7 +170,7 @@ function logOut(){
   headerRightS.style.display = 'none';
   headerAccount.style.display = 'flex'; 
   localStorage.setItem('currentUser', null);
-  headerRightS.removeEventListener('click', logOut);
+  $('.header-right .box-private .logOut').removeEventListener('click', logOut);
   location.reload();
 }
 
@@ -362,7 +368,7 @@ function showContent(arr){
             </div>
             <div class="product-info">
               <div class="product-price">${addDot(arr[i].price.split(""))} VND</div>
-              <a href="#" onclick="confirmation(this)" data-set="${arr[i].productId}" class="buy-now">Mua ngay</a>
+              <a href="javascript:void(0)" onclick="confirmation(this)" data-set="${arr[i].productId}" class="buy-now">Mua ngay</a>
             </div>
           </div>
           `;
@@ -392,6 +398,7 @@ function addDot(number){
 let flag = 0;
 function confirmation(obj){ 
   flag = 1;
+  currentAccount = JSON.parse(localStorage.getItem('currentUser'));
   if(currentAccount != null){
     let choice;
     let list = JSON.parse(localStorage.getItem('listProduct'));
@@ -399,6 +406,7 @@ function confirmation(obj){
     list.forEach(function(value){
       if(temp === value.productId){
         choice = value;
+        value.sl = $('.number-box') == null ? 1 : $('.number-box').value;
       }
     })
     currentAccount.push(choice)
@@ -410,11 +418,13 @@ function confirmation(obj){
 }
 function saveProduct(obj){
   let choice;
+  currentAccount = JSON.parse(localStorage.getItem('currentUser'));
   let list = JSON.parse(localStorage.getItem('listProduct'));
   let temp = obj.getAttribute("data-set");
   list.forEach(function(value){
     if(temp === value.productId){
       choice = value;
+      value.sl = $('.number-box').value;
     }
   })
   currentAccount.push(choice)
@@ -447,7 +457,6 @@ function searchBox(){
   }
   $('.icon-search').onclick = function(){
     tempSearch = tempSearch.split(" ");
-    console.log(tempSearch);
     for(i = 0;i < productArr.length;i++){
       tempString = productArr[i].name.split(" ");
       for(j = 0;j < tempString.length;j++){
@@ -480,7 +489,7 @@ function innerDetail(obj){
     let string = `
     <section class="product-detail">
       <div class="product-content row">
-        <div class="product-content-left row">
+        <div class="product-content-left">
           <div class="product-content-left-big-img">
             <img src="${item.img}" alt="" />
           </div>
@@ -502,11 +511,13 @@ function innerDetail(obj){
           </div>
   
           <div class="product-content-right-product-color">
-            <span class="color">Màu sắc:</span><span>Xanh</span>
+            <span class="color">Màu sắc:</span><span> Xanh</span>
           </div>
           <div class="quantity">
             <p style="font-weight: bold">Số lượng:</p>
-            <input type="number" min="0" value="1" />
+            <button onclick="innerValue('+')">+</button>
+            <input class="number-box" type="text" value="1">
+            <button onclick="innerValue('-')">-</button>
           </div>
           <div class="product-content-right-product-button">
             <button onclick="saveProduct(this)" data-set="${item.productId}">
@@ -621,7 +632,24 @@ function handleDetail(){
 	}
 }
 
-
+function sold(){
+  $('.header-right .box-private .sp').onclick = ()=>{
+    
+  }
+}
+let number = 1;
+function innerValue(char){
+  if(char === '+'){
+    number++;
+  } else {
+    console.log(number);
+    number--;
+  }
+  if(number <= 0){
+    number = 1;
+  }
+  $('.number-box').value = number;
+}
 
 textAnimation();
 handleEvent();
