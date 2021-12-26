@@ -232,10 +232,10 @@ let productArr = [
   new InitProduct("2813MO", "phone", "./assests/img/phone/iphone-13-mini-blue-2-600x600.jpg", "Iphone 13 128gb", "22000000"),
   new InitProduct("2913MO", "phone", "./assests/img/phone/iphone-13-mini-red-1-600x600.jpg", "Iphone 13 64gb", "22990000"),
   new InitProduct("3013PO", "phone", "./assests/img/phone/iphone-13-pro-gold-1-600x600.jpg", "Iphone 13 pro 64", "30000000"),
-  new InitProduct("3113PM", "phone", "./assests/img/phone/iphone-12-pro-xam-new-600x600-600x600.jpg", "Iphone 13 pro 128gb", "34000000"),
+  new InitProduct("3113PM", "phone", "./assests/img/phone/iphone-12-pro-xam-new-600x600-600x600.jpg", "Iphone 13 pro max 256gb", "40000000"),
   new InitProduct("3213PO", "phone", "./assests/img/phone/iphone-13-pro-sierra-blue-600x600.jpg", "Iphone 13 pro 256gb", "38000000"),
   new InitProduct("3313PO", "phone", "./assests/img/phone/iphone-13-pro-gold-1-600x600.jpg", "Iphone 13 pro 512gb", "40000000"),
-  new InitProduct("3413PM", "phone", "./assests/img/phone/iphone-12-pro-xam-new-600x600-600x600.jpg", "Iphone 13 pro 128gb", "34000000"),
+  new InitProduct("3413PM", "phone", "./assests/img/phone/iphone-12-pro-xam-new-600x600-600x600.jpg", "Iphone 13 pro max 128gb", "34000000"),
   new InitProduct("3513PO", "phone", "./assests/img/phone/iphone-13-pro-sierra-blue-600x600.jpg", "Iphone 13 pro 256gb", "30000000"),
   //***************************ipad********************************
   new InitProduct("3601IP", "tablet", "./assests/img/tablet/ipad-4-cellular-den-new-600x600-600x600.jpg", "ipad 4 cellular den", "10000000"),
