@@ -1,5 +1,7 @@
 let listProduct = [];
 let quantity;
+
+//Giỏ hàng
 function innerChoice(){
   let UserChoose = JSON.parse(localStorage.getItem('currentUser'));
   listProduct = UserChoose;
@@ -111,6 +113,7 @@ function innerValue2(char, i){
   total();
 }
 
+//Tính tổng số tiền lúc render sản phẩm ra trang giỏ hàng
 let totalValue;
 function total(){
   totalValue = 0;
@@ -129,6 +132,7 @@ function goToHome(){
   location.href = './index.html';
 }
 
+//Thanh toán
 function pay(){
   let temp = JSON.parse(localStorage.getItem('productSold')) || [];
   let temp2 = JSON.parse(localStorage.getItem('currentUser'));
@@ -155,6 +159,7 @@ function pay(){
   listProduct = [];
 }
 
+//Đơn hàng đã đặt
 function previewCart(){
   let temp = JSON.parse(localStorage.getItem('productSold')) || [];
   let temp2 = JSON.parse(localStorage.getItem('currentUser'));

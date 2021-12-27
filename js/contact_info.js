@@ -1,3 +1,4 @@
+//Trang liên hệ
 function innerContact(){
 	let s = `
 		<div class="contact">
@@ -27,6 +28,7 @@ function innerContact(){
   $('.page').style.display = "none";
 }
 
+//Trang giới thiệu
 function innerInfo(){
 	let s = `
 		<div class="information">

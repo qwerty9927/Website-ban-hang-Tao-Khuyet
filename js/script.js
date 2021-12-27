@@ -270,6 +270,8 @@ let productArr = [
   new InitProduct("6507LK", "LinhKien", "./assests/img/LinhKien/bluetooth-airpods-max-apple-ava-600x600.jpg","AirPods Max", "12000000")
 ]
 localStorage.setItem("listProduct", JSON.stringify(productArr));
+
+//Lọc sản phẩm
 function handleString(string){
   if(string.slice(2,) === "PM"){
     return "PM";
@@ -308,6 +310,7 @@ function innerProducts(brand, key = "NO"){
   $('.page').style.display = "block";
 }
 
+//Phân trang
 function dividePage(arr){
   let pages = Math.ceil(arr.length / 8);
   let s = "";
@@ -361,6 +364,7 @@ function showContent(arr){
   }
   for(let i = 0;count < 8 && count < arr.length;i++){
     s += `<div class="product-item"  onclick="innerDetail(this)">
+            <div class="icon-installmemt"></div>
             <div class="product-top">
                 <img  class="product-thumb" src="${arr[i].img}" alt="">
                 <a href="" class="product-name">${arr[i].name}</a>
@@ -378,6 +382,7 @@ function showContent(arr){
   $('.products').classList.add('list');
 }
 
+//Thêm dấu chấm ở số tiền
 function addDot(number){
   let j = 1;
   let s = "";
@@ -394,9 +399,9 @@ function addDot(number){
   }
   return s.split("").reverse().join("");
 }
-let flag = 0;
+
+//Xác nhận đăng nhập
 function confirmation(obj){ 
-  flag = 1;
   currentAccount = JSON.parse(localStorage.getItem('currentUser'));
   if(currentAccount != null){
     let choice;
@@ -437,6 +442,8 @@ function requireLogin(){
     boardLogin.classList.remove('active');
   }
 }
+
+//Thanh tìm kiếm
 function searchBox(){
   let tempSearch;
   let tempString;
@@ -466,11 +473,12 @@ function searchBox(){
   }
 }
 
+//Inner chi tiết sản phẩm
 function innerDetail(obj){
-  if(flag == 0){
+  number = 1;
     let listTemp = [];
     let item;
-    let code = obj.children[1].children[1].getAttribute("data-set");
+    let code = obj.children[2].children[1].getAttribute("data-set");
     productArr.forEach((value)=>{
       if(code == value.productId){
         item = value;
@@ -478,12 +486,28 @@ function innerDetail(obj){
     })
     let string = `
     <section class="product-detail">
+      <div class="product-content-right-product-header">
+        <div class="product-content-right-product-name">
+            <h1>${item.name.toUpperCase()}</h1>
+        </div>
+        <div class="product-content-right-product-rate">
+          <ul>
+            <li><i class="fas fa-star"></i></li>
+            <li><i class="fas fa-star"></i></li>
+            <li><i class="fas fa-star"></i></li>
+            <li><i class="fas fa-star"></i></li>
+            <li><i class="fas fa-star"></i></li>
+            <li style="color: #0168fa"> Đánh giá</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="product-content row">
         <div class="product-content-left">
+          
           <div class="product-content-left-big-img">
             <img src="${item.img}" alt="" />
           </div>
-  
           <div class="product-content-left-small-img">
             <img src="./assests/img/phone/apple-iphone-13-pro-max.jpg" alt="" />
             <img src="./assests/img/phone/iphone-13-pro-max-silver.jpg" alt="" />
@@ -492,10 +516,7 @@ function innerDetail(obj){
           </div>
         </div>
         <div class="product-content-right">
-          <div class="product-content-right-product-name">
-            <h1>${item.name.toUpperCase()}</h1>
-          </div>
-  
+          
           <div class="product-content-right-product-price">
             <p>${addDot(item.price.split(""))}<sup>đ</sup></p>
           </div>
@@ -509,13 +530,50 @@ function innerDetail(obj){
             <input class="number-box" type="text" value="1">
             <button class="btnUpdate" onclick="innerValue('-')"><i class="fas fa-minus"></i></button>
           </div>
+          <div class="promotion">
+            <div class="first-item">
+              <div>
+                <span>Khuyến mãi</span>  
+              </div>
+            </div>
+            <div class="box-item">
+              <div>
+                <i class="fas fa-check-circle"></i>
+                <span>Tặng PMH 200.000đ</span>  
+              </div>
+            </div>
+            <div class="box-item">
+              <div>
+                <i class="fas fa-check-circle"></i>
+                <span>Bảo hành 24 tháng</span>  
+              </div>
+            </div>
+            <div class="box-item">
+              <div>
+                <i class="fas fa-check-circle"></i>
+                <span>Thu cũ đổi mới trợ giá 15%</span>  
+              </div>
+            </div>
+            <div class="box-item">
+              <div>
+                <i class="fas fa-check-circle"></i>
+                <span>Giảm ngay 100.000đ cho gói bảo hành vàng(rơi vỡ/vào nước)</span>  
+              </div>
+            </div>
+            <div class="box-item">
+              <div>
+                <i class="fas fa-check-circle"></i>
+                <span>Tặng phần mềm học tập online trị giá 300.000</span>  
+              </div>
+            </div>
+          </div>
+
           <div class="product-content-right-product-button">
+            <button onclick="confirmation(this)" data-set="${item.productId}">Mua ngay</button>
             <button onclick="saveProduct(this)" data-set="${item.productId}">
               <i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng
             </button>
-            <button onclick="confirmation(this)" data-set="${item.productId}">Mua ngay</button>
           </div>
-  
           <div class="product-content-right-bottom">
             <div class="product-content-right-bottom-top">&#8744;</div>
   
@@ -577,9 +635,8 @@ function innerDetail(obj){
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
-    </div>
     </section>
   `;
     $('.products').innerHTML = string;
@@ -587,8 +644,6 @@ function innerDetail(obj){
     $('.innerLable').style.display = "none";
     $('.page').style.display = "none";
     handleDetail();
-  }
-  flag = 0;
 }
 function handleDetail(){
 	const bigImg = document.querySelector(".product-content-left-big-img img")
@@ -622,17 +677,12 @@ function handleDetail(){
 	}
 }
 
-function sold(){
-  $('.header-right .box-private .sp').onclick = ()=>{
-    
-  }
-}
+//Thêm số lượng sản phẩm trong trang chi tiết sản phẩm
 let number = 1;
 function innerValue(char){
   if(char === '+'){
     number++;
   } else {
-    console.log(number);
     number--;
   }
   if(number <= 0){

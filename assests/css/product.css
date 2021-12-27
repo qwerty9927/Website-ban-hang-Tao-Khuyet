@@ -54,6 +54,7 @@
 .product-detail .product-content-right-product-name h1 {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 30px;
+  
 }
 
 .product-detail .product-content-right-product-price {
@@ -80,43 +81,46 @@
 
 .product-content-right-product-button {
 	display: flex;
+  flex-direction: column;
 }
 
 .product-content-right-product-button button {
 	width: 160px;
 	height: 40px;
 	display: block;
-	margin: 20px 0 12px;
 	transition: all 0.3s ease;
-	margin-bottom: 20px;
-}
-
-.product-content-right-product-button button:first-child {
-	background-color: #ffff;
-	border: 2px solid black;
-	cursor: pointer;
-}
-
-.product-content-right-product-button button:first-child i {
-	margin-right: 5px;
-}
-
-.product-content-right-product-button button:first-child:hover {
-	background: black;
-	color: #ffff;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 20px;
+	color: #fff;
 }
 
 .product-content-right-product-button button:last-child {
-	border: 2px solid #bf8a49;
-	color: #bf8a49;
-	background: #ffff;
+  background-color:#0664f9;
+	border: none;
+  font-weight: bold;
+  margin-bottom: 20px;
 	cursor: pointer;
-	margin-left: 40px;
+}
+
+.product-content-right-product-button button:last-child i {
+	margin-right: 5px;
 }
 
 .product-content-right-product-button button:last-child:hover {
-	background: black;
-	color: #ffff;
+	background-color:#0050d7;
+}
+
+.product-content-right-product-button button:first-child {
+  margin-bottom: 10px;
+	background: #fed000;
+	cursor: pointer;
+  font-weight: bold;
+  border: none;
+}
+
+.product-content-right-product-button button:first-child:hover {
+	background-color: #aaa000;
 }
 
 .product-content-right-bottom {
@@ -195,4 +199,42 @@
 	width: 35px;
 	margin: 10px 5px;
 	padding: 5px 8px;
+}
+.product-content-right-product-rate li{
+  color: #ea9d02;
+}
+.product-content-right-product-header{
+  border-bottom: 1px solid #000;
+  margin: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+.product-content-right-product-rate ul {
+  display: flex;
+  list-style: none;
+  padding-top: 10px;
+}
+.product-content-right-product-rate ul li{
+  padding-left: 5px;
+}
+.promotion {
+  background-color: #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.first-item {
+  padding-bottom: 10px;
+  padding-left: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.box-item {
+  padding: 5px 0;
+}
+.box-item i {
+  color: #fe547f;
 }
