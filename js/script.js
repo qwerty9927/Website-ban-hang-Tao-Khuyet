@@ -401,7 +401,9 @@ function addDot(number){
 }
 
 //Xác nhận đăng nhập
+let flag = 0;
 function confirmation(obj){ 
+  flag = 1;
   currentAccount = JSON.parse(localStorage.getItem('currentUser'));
   if(currentAccount != null){
     let choice;
@@ -476,6 +478,7 @@ function searchBox(){
 //Inner chi tiết sản phẩm
 function innerDetail(obj){
   number = 1;
+  if(flag == 0){
     let listTemp = [];
     let item;
     let code = obj.children[2].children[1].getAttribute("data-set");
@@ -644,6 +647,8 @@ function innerDetail(obj){
     $('.innerLable').style.display = "none";
     $('.page').style.display = "none";
     handleDetail();
+  }
+  flag = 0;
 }
 function handleDetail(){
 	const bigImg = document.querySelector(".product-content-left-big-img img")
