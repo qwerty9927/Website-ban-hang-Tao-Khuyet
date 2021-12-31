@@ -93,7 +93,7 @@ function checkRegister(){
       warningUserReg.innerHTML = "";
       formData.user = userRegister.value;
     }
-    if(phoneNumber.value.length != 10 && isNaN(phoneNumber.value)){
+    if(phoneNumber.value.length != 10 || isNaN(phoneNumber.value)){
       warningPhone.innerHTML = "So dien thoai khong dung";
       phoneNumber.focus();
       return false;
