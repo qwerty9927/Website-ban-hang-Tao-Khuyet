@@ -231,37 +231,49 @@ let formProduct = {
   name: "",
   price: ""
 }
+{/*  */}
+
 let inputProduct = `
-          <form id="">
             <div class="board active">
               <div class="left-board">
                 <label class="title">Product</label>
                 <div class="form-input">
-                  <label class="space-tb">Product ID</label>
-                  <input type="text" id="productId">
-                </div>
-                <div class="form-input">
-                  <label class="space-tb">Brand</label>
+                  <label class="space-tb">Loại sản phẩm</label>
                   <select id="brand">
                     <option value="">Select</option>
-                    <option value="phone">phone</option>
-                    <option value="tablet">tablet</option>
-                    <option value="computer">computer</option>
-                    <option value="LinhKien">LinhKien</option>
+                    <option value="phone">Phone</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="computer">Computer</option>
+                    <option value="LinhKien">Phụ kiện</option>
+                  </select>
+                </div>
+                <div class="form-input option-phone" style="display: none">
+                  <label class="space-tb">Loại</label>
+                  <select id="brand-option">
+                    <option value="">Select</option>
+                    <option value="11OO">Iphone 11</option>
+                    <option value="11PO">Iphone 11 pro</option>
+                    <option value="11PM">Iphone 11 pro max</option>
+                    <option value="12OO">Iphone 12</option>
+                    <option value="12PO">Iphone 12 pro</option>
+                    <option value="12PM">Iphone 12 pro max</option>
+                    <option value="13OO">Iphone 13</option>
+                    <option value="13PO">Iphone 13 pro</option>
+                    <option value="13PM">Iphone 13 pro max</option>
                   </select>
                 </div>
                 <div class="form-input">
-                  <label class="space-tb">Name</label>
+                  <label class="space-tb">Tên sản phẩm</label>
                   <input type="text" id="name" required>
                   <span></span>
                 </div>
                 <div class="form-input">
-                  <label class="space-tb">Price</label>
+                  <label class="space-tb">Giá sản phẩm</label>
                   <input type="text" id="price" required>
                   <span></span>
                 </div>
                 <div class="form-input">
-                  <label class="space-tb">Image</label>
+                  <label class="space-tb">Hình ảnh</label>
                   <input style="border: none" type="file" id="image" accept="image/png, image/jpeg">
                 </div>
                 <div class="bot-board">
@@ -272,8 +284,12 @@ let inputProduct = `
                 </div>
               </div>
             </div>
-          </form>
 `;
+
+window.onload= (e) => {
+ 
+}
+
 function deleteProduct(obj){
   if(confirm('Bạn có muốn xóa sản phẩm này?')){
     for(let i = parseInt(obj.getAttribute("data-set"));i < arrProduct.length;i++){
@@ -287,71 +303,156 @@ function deleteProduct(obj){
   }
 }
 
+
+const validateUpdate = (tmpName,tmpPrice) =>{
+  const regrex = new RegExp('^[0-9]{1,9}$');
+    if(tmpName.value == ""){
+      alert("Vui lòng nhập tên sp ")
+      tmpName.focus();
+      return false;
+    }  
+    if(tmpPrice.value == ""){
+      alert("Vui lòng nhập giá sp ")
+      tmpPrice.focus();
+      return false;
+    }  
+  
+    if(regrex.test(tmpPrice.value)==false){
+      alert("Giá sản phẩm ko hợp lệ");
+      tmpPrice.focus();
+      return false;
+    }
+  return true
+}
+
 function updateProduct(obj){
   const btnSubmit = $('.bot-board input');
   const board = $('.board');
-  let productId = $('#productId');
   let brand = $('#brand');
   let name = $('#name');
   let image = $('#image');
   let price = $('#price');
-  let n = obj.getAttribute("data-set");
+  let n = parseInt(obj.getAttribute("data-set"))
   board.classList.remove('active');
   $('.title').innerHTML = "Update";
   btnSubmit.value = "Update";
-  productId.value = arrProduct[n].productId;
   name.value = arrProduct[n].name;
   price.value = arrProduct[n].price;
-  brand.onchange = ()=>{
-    formProduct.brand = brand.value;
-  }
+  brand.closest('.form-input').style.display = "none"
   btnSubmit.onclick = ()=>{
-    formProduct.productId = productId.value;    
-    formProduct.name = name.value;
-    formProduct.img = image.value.replace("C:\\fakepath\\", `./assests/img/${formProduct.brand}/`);
-    if(isNaN(price.value)){
-      alert("Lỗi nhập price");
-      price.focus();
-      return false;
+    if(validateUpdate(name,price)){
+      formProduct.productId = arrProduct[n].productId
+      formProduct.brand = arrProduct[n].brand
+      formProduct.name = name.value;
+      formProduct.img = image.value.replace("C:\\fakepath\\", `./assests/img/${formProduct.brand}/`) || arrProduct[n].img;
+      formProduct.price = price.value;
+      arrProduct[n] = {...formProduct};
+      localStorage.setItem('listProduct', JSON.stringify(arrProduct));
+      board.classList.add('active');
+      innerProducts();
+      return true;
     }
-    formProduct.price = price.value;
-    arrProduct[n] = formProduct;
-    localStorage.setItem('listProduct', JSON.stringify(arrProduct));
-    board.classList.add('active');
-    innerProducts();
+    else
+      return false;
   }
 }
 
+
+const validate = (tmpBrandOption,tmpBrand,tmpName,tmpPrice) =>{
+  const regrex = new RegExp('^[0-9]{1,9}$');
+    
+    if(tmpBrand.value== ""){
+      alert("Vui lòng chọn loại sp ")
+      tmpBrand.focus();
+      return false;
+    }
+    if(tmpBrandOption.value== "" && tmpBrand.value == "phone"){
+      alert("Vui lòng chọn loại ")
+      tmpBrand.focus();
+      return false;
+    }
+    if(tmpName.value == ""){
+      alert("Vui lòng nhập tên sp ")
+      tmpName.focus();
+      return false;
+    }  
+    if(tmpPrice.value == ""){
+      alert("Vui lòng nhập giá sp ")
+      tmpPrice.focus();
+      return false;
+    }  
+    if(regrex.test(tmpPrice.value)==false){
+      alert("Giá sản phẩm ko hợp lệ");
+      tmpPrice.focus();
+      return false;
+    }
+    return true;
+}
+
 function addProduct(){
+  let Product = {
+    productId: "",
+    brand: "",
+    img: "",
+    name: "",
+    price: ""
+  }
   const btnSubmit = $('.bot-board input');
   const board = $('.board');
-  let productId = $('#productId');
   let brand = $('#brand');
+  let brandOption = $('#brand-option');
   let name = $('#name');
   let image = $('#image');
   let price = $('#price');
+  name.value = ""
+  image.value = ""
+  price.value = ""
   board.classList.remove('active');
   $('.title').innerHTML = "Add";
   btnSubmit.value = "Add";
+  brand.closest('.form-input').style.display = "flex"
   brand.onchange = ()=>{
-    formProduct.brand = brand.value;
+    const data = countData.dataProduct()
+    const numbericalOrder = parseInt(data[data.length - 1].productId.slice(0, -4)) + 1
+    if(brand.value === "phone"){
+      document.querySelector('.option-phone').style.display = "flex"
+      brandOption.onchange = (e) => {
+        Product.productId = numbericalOrder + e.target.value
+        console.log(Product)
+      }
+    } else {
+      document.querySelector('.option-phone').style.display = "none"
+    }
+    switch(brand.value){
+      case "tablet":
+        Product.productId = numbericalOrder + "00IP"
+        break
+      case "computer":
+        Product.productId = numbericalOrder + "00MB"
+        break
+      case "LinhKien":
+        Product.productId = numbericalOrder + "00LK"
+        break
+    }
+    Product.brand = brand.value;
+    console.log(Product)
   }
   btnSubmit.onclick = ()=>{
-    formProduct.productId = productId.value;    
-    formProduct.name = name.value;
-    formProduct.img = image.value.replace("C:\\fakepath\\", `./assests/img/${formProduct.brand}/`);
-    if(isNaN(price.value)){
-      alert("Lỗi nhập price");
-      price.focus();
-      return false;
+    if(validate(brandOption,brand,name,price)){
+      // Product.productId = productId.value;    
+      Product.name = name.value;
+      Product.img = image.value.replace("C:\\fakepath\\", `./assests/img/${Product.brand}/`);
+      Product.price = price.value;
+      arrProduct.push(Product);
+      localStorage.setItem('listProduct', JSON.stringify(arrProduct));
+      board.classList.add('active');
+      innerProducts();
+      countData.countUser();
+      countData.rederQuatity();
+      return true;
     }
-    formProduct.price = price.value;
-    arrProduct.push(formProduct);
-    localStorage.setItem('listProduct', JSON.stringify(arrProduct));
-    board.classList.add('active');
-    innerProducts();
-    countData.countUser();
-    countData.rederQuatity();
+    else
+    return false;
   }
 }
 

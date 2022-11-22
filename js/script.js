@@ -86,15 +86,26 @@ function checkRegister(){
     formData.fullName = fullName.value;
     formData.address = address.value;
     if(userRegister.value === ""){
-      warningUserReg.innerHTML = "Nhap user";
+      warningUserReg.innerHTML = "Nhập username";
       userRegister.focus();
       return false;
-    }else{
+    } else{
+      for(i of temp){
+        if(i.user === userRegister.value){
+          warningUserReg.innerHTML = "Tài khoản đã tồn tại";
+          return false
+        }
+      }
       warningUserReg.innerHTML = "";
       formData.user = userRegister.value;
     }
-    if(phoneNumber.value.length != 10 || isNaN(phoneNumber.value)){
-      warningPhone.innerHTML = "So dien thoai khong dung";
+    if(!/^[a-zA-Z0-9]*$/.test(userRegister.value)){
+      warningUserReg.innerHTML = "Username không được chứa ký tự đặc biệt";
+      userRegister.focus();
+      return false;
+    }
+    if(!/^[0-9]{10}$/.test(phoneNumber.value)){
+      warningPhone.innerHTML = "Số điện thoại không đúng";
       phoneNumber.focus();
       return false;
     }else{
@@ -102,7 +113,7 @@ function checkRegister(){
       formData.phoneNumber = phoneNumber.value;
     }
     if(passRegister.value.length < 8){
-      warningPassReg.innerHTML = "Mat khau qua ngan";
+      warningPassReg.innerHTML = "Mật khẩu quá ngắn";
       passRegister.focus();
       return false;
     }else{
@@ -110,8 +121,8 @@ function checkRegister(){
       formData.pass = passRegister.value;
     }
     if(passRegister.value != rePassword.value){
-      warningPassReg.innerHTML = "Mat khau khong trung khop";
-      warningRePass.innerHTML = "Mat khau khong trung khop";
+      warningPassReg.innerHTML = "Mật khẩu không trùng khớp";
+      warningRePass.innerHTML = "Mật khẩu không trùng khớp";
       rePassword.focus();
       return false;
     }else{
@@ -125,6 +136,7 @@ function checkRegister(){
     setAccount(formData);
     listUser.push(formData);
     localStorage.setItem('dataUser', JSON.stringify(listUser));
+    alert('Đăng ký thành công')
   }
 }
 
@@ -138,10 +150,11 @@ function checkLogin(){
         return true;
       }else if(userLogin.value === i.user && passLogin.value === i.pass){
         setAccount(i);
+        alert('Đăng nhập thành công')
         return true;
       }
     }
-    alert('Tai khoan khong ton tai');
+    alert('Sai tài khoản hoặc mật khẩu');
     return false;
   }
 }

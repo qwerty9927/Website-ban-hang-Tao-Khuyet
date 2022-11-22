@@ -31,7 +31,7 @@ ul {
 
 .app::before {
   content: "";
-  background: url('../img/BG1.png') no-repeat center/cover;
+  /* background: url('../img/BG1.png') no-repeat center/cover; */
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -546,7 +546,10 @@ nav {
   margin-top: 30px;
   margin-left: 4px;
   margin-right: 5px;
-  background: url('../img/tagline.png') no-repeat center/contain;
+  /* background: url('../img/tagline.png') no-repeat center/contain; */
+  background-color: rgb(66, 66, 66);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   color: #fff;
   letter-spacing: 5px;
   display: flex;
